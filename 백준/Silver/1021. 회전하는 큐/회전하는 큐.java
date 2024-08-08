@@ -3,35 +3,37 @@ import java.io.*;
 
 class Main {
     public static void main(String[] args) throws IOException{
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-
+        BufferedReader br = new  BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st =  new StringTokenizer(br.readLine());
+        
         int N = Integer.parseInt(st.nextToken());
         int M = Integer.parseInt(st.nextToken());
+
+        int cnt = 0;
         LinkedList<Integer> dq = new LinkedList<>();
-        int count = 0;
         for(int i = 1; i<=N; i++){
             dq.add(i);
         }
+
         st = new StringTokenizer(br.readLine());
         for(int i = 0; i<M; i++){
-            int target = Integer.parseInt(st.nextToken());
-            int index = dq.indexOf(target);
+            int target =  Integer.parseInt(st.nextToken());
+            int idx = dq.indexOf(target);
 
-            if(index <= dq.size()/2){
-                for(int j =0; j<index; j++){ 
-                    dq.addLast(dq.removeFirst());
-                    count++;
+            if(idx <= dq.size()/2){
+                for(int j = 0; j<idx; j++){
+                    dq.add(dq.remove());
+                    cnt++;
                 }
             }
             else{
-                for(int j = 0; j<dq.size()-index; j++){ 
+                for(int j = 0; j<dq.size()-idx; j++){
                     dq.addFirst(dq.removeLast());
-                    count++;
+                    cnt++;
                 }
             }
-          dq.remove();      
+            dq.remove();
         }
-        System.out.println(count);
+        System.out.println(cnt);
     }
 }
