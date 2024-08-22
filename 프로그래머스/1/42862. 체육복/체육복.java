@@ -18,13 +18,13 @@ class Solution {
             }
         }
         
-        for (int i = 0; i < reserve.length; i++) {
-            if (reserve[i] == -1) continue; 
-            for (int j = 0; j < lost.length; j++) {
-                if (lost[j] == -1) continue;
-                if (Math.abs(reserve[i] - lost[j]) == 1) {
-                    answer++;
+        for(int i = 0; i<reserve.length; i++){
+            if(reserve[i] == -1)continue;
+            for(int j= 0; j<lost.length; j++){
+                if(lost[j] == -1)continue;
+                if(Math.abs(reserve[i]-lost[j])==1){
                     lost[j] = -1;
+                    answer++;
                     break;
                 }
             }
